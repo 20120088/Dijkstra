@@ -39,14 +39,14 @@ void dijkstra() {
 	do {
 		u = 0;
 		mind = 10000000;
-		for (int i = 1; i <= n; i++)
+		for (int i = 1; i <= n; i++)//tìm đỉnh u chưa cố định và có đường đi ngắn nhất từ s
 			if (freeu[i] && d[i] < mind) {
 				u = i;
 				mind = d[i];
 			}
 		if (u == 0 || u == f) return;
-		freeu[u] = false;
-		for (int i = head[u] + 1; i <= head[u + 1]; i++) {
+		freeu[u] = false; //cố định u
+		for (int i = head[u] + 1; i <= head[u + 1]; i++) {//sửa đường đi từ s đến các đỉnh v chưa cố định thông qua u
 			v = adj[i];
 			if (freeu[v] && d[v] > d[u] + adv[i]) {
 				d[v] = d[u] + adv[i];
